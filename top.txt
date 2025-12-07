@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>MUNDO DJ — O MAIOR PACK DA INTERNET PARA PROFISSIONAIS!</title>
+  <meta name="description" content="Pack profissional para DJs — músicas, videoclipes e efeitos. Material hospedado no grupo VIP Telegram." />
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;width:100%;scroll-behavior:smooth;overflow-x:hidden}
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      background:#050407;
+      color:#eef2f7;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      padding:18px 12px;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      background:linear-gradient(180deg, rgba(7,8,10,0.75), rgba(6,6,8,0.9));
+      border-radius:16px;
+      box-shadow:0 30px 80px rgba(3,3,6,0.8);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .bg-neon {
+      position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+      background: radial-gradient(ellipse at 10% 10%, rgba(255,0,122,0.06), transparent 6%),
+                  radial-gradient(ellipse at 90% 90%, rgba(0,255,255,0.04), transparent 8%);
+    }
+    .neon-lights {
+      position:absolute; inset:0; z-index:0; mix-blend-mode:screen;
+      background: conic-gradient(from 0deg, rgba(255,20,147,0.06), rgba(255,140,0,0.03), rgba(0,229,255,0.05), transparent 60%);
+      animation: spin 18s linear infinite;
+      filter:blur(38px);
+      opacity:.9;
+    }
+    @keyframes spin{ to { transform: rotate(360deg); } }
+
+    .light-streak {
+      position:absolute; height:220px; width:1200px; left:-200px; top:10%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+      transform:skewX(-22deg);
+      animation: streak 6s linear infinite;
+      filter:blur(8px);
+    }
+    .light-streak:nth-child(2){ top:40%; animation-duration:8s; opacity:.8; height:160px; left:-300px; }
+    .light-streak:nth-child(3){ top:70%; animation-duration:10s; opacity:.6; height:200px; left:-100px; }
+    @keyframes streak{
+      0%{ transform: translateX(-120%) skewX(-22deg) }
+      100%{ transform: translateX(140%) skewX(-22deg) }
+    }
+
+    .hero{
+      position:relative;
+      z-index:3;
+      display:grid;
+      grid-template-columns: 1fr 440px;
+      gap:28px;
+      align-items:center;
+      padding:28px;
+    }
+
+    .left{ padding-right:12px; }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:56px; height:56px; border-radius:12px;
+      background:linear-gradient(90deg,#ff4d00,#ffcc00);
+      display:flex; align-items:center; justify-content:center; font-weight:900; color:#081018;
+      font-size:20px;
+      box-shadow:0 6px 20px rgba(255,140,0,0.12);
+    }
+
+    h1{font-size:26px;line-height:1.05;margin-bottom:6px}
+    .subtitle{color:#cfd8e3;font-size:14px;margin-bottom:12px}
+    .badge{display:inline-block;background:#ffcc00;color:#081018;padding:8px 12px;border-radius:999px;font-weight:800;margin-bottom:14px}
+
+    .lead{ color:#d7e2f5;margin-bottom:12px;font-size:15px; }
+    .features{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .feature{
+      background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:10px;font-size:13px;color:#e6eefb;
+    }
+
+    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;font-weight:800;border:0;cursor:pointer;text-decoration:none;
+    }
+    .btn-primary{background:linear-gradient(90deg,#ff4d00,#ffcc00);color:#081018}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#dbe6ff}
+    .note{font-size:13px;color:#99a6c6;margin-top:10px}
+
+    .card{
+      position:relative;border-radius:12px;overflow:hidden;height:420px;background:#000;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      z-index:3;
+    }
+    .video-wrap{position:relative;height:100%;width:100%;display:flex;align-items:center;justify-content:center;background:#000}
+    video{width:100%;height:100%;object-fit:contain;display:block}
+
+    .video-controls{
+      position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:6;
+    }
+    .ctrl-btn{
+      background:rgba(0,0,0,0.6);border:2px solid rgba(255,204,0,0.95);padding:10px 16px;border-radius:999px;
+      font-weight:900;color:#ffeb9c;cursor:pointer;backdrop-filter:blur(4px);
+      box-shadow:0 6px 18px rgba(255,140,0,0.06);
+      transition:transform .18s ease, background .18s ease;
+    }
+    .ctrl-btn:hover{transform:translateY(-3px);}
+
+    .audio-toggle{
+      position:absolute;top:16px;right:16px;z-index:6;background:rgba(0,0,0,0.55);
+      border:2px solid #00eaff;padding:8px 10px;border-radius:10px;color:#00eaff;font-weight:800;cursor:pointer;
+    }
+
+    .offers{
+      padding:26px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      display:flex;flex-direction:column;gap:12px;align-items:center;z-index:2;
+    }
+    .offers h3{color:#ffd77a;font-size:20px;margin-bottom:6px}
+    .roleta-btn{
+      width:100%;max-width:720px;background:linear-gradient(90deg,#ff0055,#ff6f91);color:#fff;padding:14px;border-radius:12px;
+      font-weight:900;text-decoration:none;text-align:center;display:block;
+      box-shadow:0 12px 30px rgba(255,0,85,0.12);transition:transform .16s ease;
+    }
+    .roleta-btn:hover{transform:scale(1.02)}
+
+    .offer-line{
+      width:100%;max-width:720px;background:rgba(0,0,0,0.35);padding:12px;border-radius:10px;
+      color:#ffd77a;font-weight:800;text-align:center
+    }
+
+    footer{padding:14px 28px;color:#9fb1d9;font-size:13px;text-align:center}
+
+    /* VOLUME BOX FIXO */
+    .volume-box{
+      position:fixed;
+      top:15px;
+      right:15px;
+      z-index:9999;
+      background:rgba(0,0,0,0.65);
+      padding:8px 12px;
+      border-radius:12px;
+      border:2px solid #ffcc00;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .volume-slider{ width:110px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- *************** CONTROLE DE VOLUME *************** -->
+  <div class="volume-box">
+    <span style="font-size:20px">🔊</span>
+    <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.15">
+  </div>
+  <!-- ************************************************* -->
+
+  <div class="container" role="main">
+
+    <div class="bg-neon">
+      <div class="neon-lights"></div>
+      <div class="light-streak"></div>
+      <div class="light-streak"></div>
+      <div class="light-streak"></div>
+    </div>
+
+    <div class="hero">
+
+      <div class="left" style="z-index:3">
+        <div class="brand">
+          <div class="logo">DJ</div>
+          <div>
+            <h1>MUNDO DJ — O MAIOR PACK DA INTERNET PARA PROFISSIONAIS!</h1>
+            <div class="subtitle">O pack mais avaliado por profissionais<br><small style="color:#ffdd80">(ATENÇÃO: material hospedado no GRUPO VIP TELEGRAM)</small></div>
+          </div>
+        </div>
+
+        <div class="badge">Pack Profissional R$50,00</div>
+
+        <p class="lead">Material pensado para DJs, produtores e criadores de conteúdo. Inclui: músicas para festas, efeitos, vinhetas, sample packs e vídeosclipes.</p>
+
+        <div class="features">
+          <div class="feature">MAIS DE 4 TERA DE MÚSICAS</div>
+          <div class="feature">+1 TERA DE EFEITOS SONOROS</div>
+          <div class="feature">PACOTÃO DE VIDEOCLIPES</div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://wa.link/pk10ic" target="_blank">CLICK AQUI PARA COMPRAR PELO WHATSAPP</a>
+          <a class="btn btn-secondary" href="#offers">VER OFERTAS</a>
+        </div>
+
+        <div class="note">Pagamento seguro • Entrega do link no Whatsapp!</div>
+      </div>
+
+      <div class="card">
+        <div class="video-wrap">
+          <video id="heroVideo" playsinline>
+            <source src="video.mp4" type="video/mp4">
+          </video>
+
+          <button id="audioToggle" class="audio-toggle">🔈 Som</button>
+
+          <div class="video-controls">
+            <button class="ctrl-btn" onclick="playVid()">▶ PLAY</button>
+            <button class="ctrl-btn" onclick="stopVid()">■ STOP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="offers" class="offers">
+      <h3>ESCOLHA ABAIXO E TENTE A SORTE!</h3>
+
+      <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">ROLETA MALUCA — DESCONTO!</a>
+
+      <div class="offer-line">PACK 15 MIL MÚSICAS MP3 + VIDEOCLIPES</div>
+      <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">SE GANHAR PAGA R$1,00</a>
+
+      <div class="offer-line">PACK 25 MIL MÚSICAS + VIDEOCLIPES</div>
+      <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">SE GANHAR PAGA R$4,00</a>
+
+      <div class="offer-line">PACK PROFISSIONAL DJ</div>
+      <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">SE GANHAR PAGA R$45,00</a>
+    </div>
+
+    <footer>© Mundo DJ — Todos os direitos reservados</footer>
+  </div>
+
+  <!-- ÁUDIO DE FUNDO -->
+  <audio id="bgAudio" loop autoplay playsinline muted>
+    <source src="musica-fundo.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const vid = document.getElementById('heroVideo');
+    const audio = document.getElementById('bgAudio');
+    const slider = document.getElementById('volumeSlider');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      vid.play().catch(()=>{});
+      audio.volume = 0.15;
+    });
+
+    slider.addEventListener('input', () => {
+      audio.volume = slider.value;
+      audio.muted = false;
+    });
+
+    window.addEventListener('click', () => {
+      audio.muted = false;
+    }, { once: true });
+
+    function playVid(){ vid.play(); }
+    function stopVid(){ vid.pause(); vid.currentTime = 0; }
+  </script>
+
+</body>
+</html>
