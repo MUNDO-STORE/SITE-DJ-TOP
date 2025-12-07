@@ -29,388 +29,253 @@
       position:relative;
     }
 
-    /* Neon / visual */
-    .bg-neon { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+    .bg-neon {
+      position:absolute; inset:0; z-index:0; pointer-events:none;
       background: radial-gradient(ellipse at 10% 10%, rgba(255,0,122,0.06), transparent 6%),
                   radial-gradient(ellipse at 90% 90%, rgba(0,255,255,0.04), transparent 8%);
     }
-    .neon-lights { position:absolute; inset:0; z-index:0; mix-blend-mode:screen;
+    .neon-lights {
+      position:absolute; inset:0; z-index:0; mix-blend-mode:screen;
       background: conic-gradient(from 0deg, rgba(255,20,147,0.06), rgba(255,140,0,0.03), rgba(0,229,255,0.05), transparent 60%);
       animation: spin 18s linear infinite; filter:blur(38px); opacity:.9;
     }
     @keyframes spin{ to { transform: rotate(360deg); } }
 
-    .light-streak { position:absolute; height:220px; width:1200px; left:-200px; top:10%;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-      transform:skewX(-22deg); animation: streak 6s linear infinite; filter:blur(8px);
+    .hero{
+      position:relative;
+      z-index:3;
+      display:grid;
+      grid-template-columns: 1fr 440px;
+      gap:28px;
+      align-items:center;
+      padding:28px;
     }
-    .light-streak:nth-child(2){ top:40%; animation-duration:8s; opacity:.8; height:160px; left:-300px; }
-    .light-streak:nth-child(3){ top:70%; animation-duration:10s; opacity:.6; height:200px; left:-100px; }
-    @keyframes streak{ 0%{ transform: translateX(-120%) skewX(-22deg) } 100%{ transform: translateX(140%) skewX(-22deg) } }
 
-    /* Layout */
-    .hero{ position:relative; z-index:3; display:grid; grid-template-columns: 1fr 440px; gap:28px; align-items:center; padding:28px; }
-    .left{ padding-right:12px; }
-    .logo{ width:56px; height:56px; border-radius:12px; background:linear-gradient(90deg,#ff4d00,#ffcc00);
-      display:flex; align-items:center; justify-content:center; font-weight:900; color:#081018; font-size:20px;
+    .logo{
+      width:56px; height:56px; border-radius:12px;
+      background:linear-gradient(90deg,#ff4d00,#ffcc00);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900; color:#081018; font-size:20px;
       box-shadow:0 6px 20px rgba(255,140,0,0.12);
     }
-    h1{font-size:26px;line-height:1.05;margin-bottom:6px}
-    .subtitle{color:#cfd8e3;font-size:14px;margin-bottom:12px}
-    .badge{display:inline-block;background:#ffcc00;color:#081018;padding:8px 12px;border-radius:999px;font-weight:800;margin-bottom:14px}
-    .lead{ color:#d7e2f5;margin-bottom:12px;font-size:15px; }
-    .features{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    .feature{ background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:10px;font-size:13px;color:#e6eefb; }
-    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{ display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;font-weight:800;border:0;cursor:pointer;text-decoration:none; }
-    .btn-primary{background:linear-gradient(90deg,#ff4d00,#ffcc00);color:#081018}
-    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#dbe6ff}
-    .note{font-size:13px;color:#99a6c6;margin-top:10px}
 
-    .card{ position:relative;border-radius:12px;overflow:hidden;height:420px;background:#000; box-shadow:0 20px 50px rgba(0,0,0,0.6); z-index:3; }
-    .video-wrap{position:relative;height:100%;width:100%;display:flex;align-items:center;justify-content:center;background:#000}
-    video{width:100%;height:100%;object-fit:contain;display:block}
-    .video-controls{ position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:6; }
-    .ctrl-btn{ background:rgba(0,0,0,0.6);border:2px solid rgba(255,204,0,0.95);padding:10px 16px;border-radius:999px;font-weight:900;color:#ffeb9c;cursor:pointer;backdrop-filter:blur(4px); box-shadow:0 6px 18px rgba(255,140,0,0.06); transition:transform .18s ease, background .18s ease; }
-    .ctrl-btn:hover{transform:translateY(-3px);}
+    .badge{
+      display:inline-block;background:#ffcc00;color:#081018;
+      padding:8px 12px;border-radius:999px;font-weight:800;
+      margin-bottom:14px
+    }
 
-    .offers{ padding:26px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent); display:flex;flex-direction:column;gap:12px;align-items:center;z-index:2; }
-    .roleta-btn{ width:100%;max-width:720px;background:linear-gradient(90deg,#ff0055,#ff6f91);color:#fff;padding:14px;border-radius:12px;font-weight:900;text-decoration:none;text-align:center;display:block; box-shadow:0 12px 30px rgba(255,0,85,0.12);transition:transform .16s ease; }
+    .feature{
+      background:rgba(255,255,255,0.03);
+      padding:8px 12px;border-radius:10px;font-size:13px;color:#e6eefb;
+    }
+
+    /* BOTÃO QUE SUBSTITUI O VÍDEO */
+    .btn-watch{
+      width:100%;
+      padding:22px;
+      text-align:center;
+      background:linear-gradient(90deg,#ff0055,#ffcc00);
+      color:#081018;
+      font-size:20px;
+      font-weight:900;
+      text-decoration:none;
+      border-radius:12px;
+      box-shadow:0 12px 30px rgba(255,0,85,0.22);
+      transition:transform .16s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100%;
+    }
+    .btn-watch:hover{
+      transform:scale(1.03);
+    }
+
+    /* OFERTAS */
+    .offers{
+      padding:26px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      display:flex;flex-direction:column;gap:12px;align-items:center
+    }
+    .roleta-btn{
+      width:100%;max-width:720px;background:linear-gradient(90deg,#ff0055,#ff6f91);
+      color:#fff;padding:14px;border-radius:12px;font-weight:900;text-align:center;
+      text-decoration:none;display:block;
+      box-shadow:0 12px 30px rgba(255,0,85,0.12);transition:.16s;
+    }
     .roleta-btn:hover{transform:scale(1.02)}
-    .offer-line{ width:100%;max-width:720px;background:rgba(0,0,0,0.35);padding:12px;border-radius:10px;color:#ffd77a;font-weight:800;text-align:center }
 
     footer{padding:14px 28px;color:#9fb1d9;font-size:13px;text-align:center}
 
-    /* ==== VOLUME / SOM DJ BUTTON ==== */
-    .audio-widget{
-      position:fixed;
-      top:14px;
-      right:14px;
-      z-index:9999;
+    /* 🎵 PLAYER DJ PROFISSIONAL */
+    .dj-player{
+      width:100%;
+      max-width:420px;
+      margin:30px auto;
+      padding:18px;
+      background:rgba(255,255,255,0.05);
+      border-radius:18px;
+      backdrop-filter:blur(6px);
       display:flex;
+      gap:12px;
+      justify-content:center;
       align-items:center;
-      gap:10px;
-      background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.5));
-      padding:8px;
-      border-radius:14px;
-      border:2px solid rgba(255,204,0,0.9);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 0 25px rgba(255,0,120,0.25);
     }
 
-    /* Stylized DJ button */
     .dj-btn{
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #333 0%, #070707 45%, #000 100%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      padding:14px 22px;
+      border:none;
+      font-size:16px;
+      font-weight:800;
+      color:#081018;
       cursor:pointer;
-      position:relative;
-      overflow:visible;
-      border:3px solid rgba(255,204,0,0.9);
-      box-shadow:0 6px 18px rgba(255,140,0,0.06), inset 0 -6px 20px rgba(0,0,0,0.6);
+      border-radius:12px;
+      transition:0.18s;
+      background:linear-gradient(90deg,#ff0084,#ffcc00);
+      box-shadow:0 0 18px rgba(255,0,120,0.6);
     }
 
-    /* Vinyl disc (inner circle) */
-    .vinyl{
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      background:conic-gradient(#111 0 5%, #222 5% 10%, #0b0b0b 10% 100%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition: transform 0.4s linear;
-    }
-    .vinyl::after{
-      content:"";
-      width:8px; height:8px; border-radius:50%; background:#ffcc00; box-shadow:0 0 6px rgba(255,204,0,0.9);
+    .dj-btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 28px rgba(255,0,120,0.9);
     }
 
-    /* spinning when active */
-    .dj-btn.active .vinyl{
-      animation: spin-vinyl 2s linear infinite;
+    .play-btn{
+      animation:pulsePlay 1.2s infinite;
     }
-    @keyframes spin-vinyl{ to { transform: rotate(360deg); } }
-
-    /* Equalizer bars inside button (overlay small) */
-    .eq{
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      display:flex;
-      gap:3px;
-      align-items:end;
-      pointer-events:none;
-      opacity:0;
+    @keyframes pulsePlay{
+      0%{transform:scale(1); box-shadow:0 0 18px rgba(255,0,120,0.4)}
+      50%{transform:scale(1.08); box-shadow:0 0 28px rgba(255,255,0,0.9)}
+      100%{transform:scale(1); box-shadow:0 0 18px rgba(255,0,120,0.4)}
     }
-    .dj-btn.active .eq{ opacity:1; transition: opacity .2s ease; }
 
-    .bar{
-      width:4px;
+    .volume-box input[type=range]{
+      width:120px;
       height:6px;
-      background:#ffdd55;
-      border-radius:2px;
-      animation: eq-breathe 600ms ease-in-out infinite;
-      animation-play-state:paused;
-      transform-origin: bottom center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
-    .bar.b2{ animation-duration:420ms; background:#ffd37a; }
-    .bar.b3{ animation-duration:760ms; background:#ffb86b; }
-
-    /* run when active */
-    .dj-btn.active .bar{ animation-play-state:running; }
-
-    @keyframes eq-breathe{
-      0%{ transform: scaleY(0.35); }
-      50%{ transform: scaleY(1.0); }
-      100%{ transform: scaleY(0.4); }
-    }
-
-    /* Volume slider */
-    .volume-slider{ width:120px; -webkit-appearance:none; appearance:none; background:transparent; }
-    .volume-slider::-webkit-slider-runnable-track{ height:6px; background: rgba(255,255,255,0.12); border-radius:6px; }
-    .volume-slider::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:#ffcc00; margin-top:-4px; box-shadow:0 4px 10px rgba(0,0,0,0.5); }
-    .volume-slider:focus{ outline:none; }
-
-    /* small responsive tweak */
-    @media (max-width:480px){
-      .audio-widget{ top:10px; right:10px; padding:6px; }
-      .volume-slider{ width:90px; }
+      border-radius:5px;
+      background:linear-gradient(90deg,#ff0084,#ffcc00);
+      outline:none;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Audio widget: DJ button + volume -->
-  <div class="audio-widget" aria-label="Controle de áudio">
-    <button id="audioToggle" class="dj-btn" aria-pressed="false" title="Ativar/Desativar som">
-      <div class="vinyl" aria-hidden></div>
-      <div class="eq" aria-hidden>
-        <div class="bar b1"></div>
-        <div class="bar b2"></div>
-        <div class="bar b3"></div>
-      </div>
-    </button>
-    <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.15" aria-label="Controle de volume">
-  </div>
+  <div class="container">
 
-  <!-- Página principal -->
-  <div class="container" role="main">
-
-    <div class="bg-neon" aria-hidden>
-      <div class="neon-lights" aria-hidden></div>
-      <div class="light-streak" aria-hidden></div>
-      <div class="light-streak" aria-hidden></div>
-      <div class="light-streak" aria-hidden></div>
+    <div class="bg-neon">
+      <div class="neon-lights"></div>
     </div>
 
     <div class="hero">
+
       <div class="left" style="z-index:3">
         <div class="brand" style="display:flex;gap:12px;align-items:center;">
           <div class="logo">DJ</div>
           <div>
             <h1>MUNDO DJ — O MAIOR PACK DA INTERNET PARA PROFISSIONAIS!</h1>
-            <div class="subtitle">O pack mais avaliado por profissionais<br><small style="color:#ffdd80">(ATENÇÃO: material hospedado no GRUPO VIP TELEGRAM)</small></div>
+            <div class="subtitle">O pack mais avaliado por profissionais<br>
+              <small style="color:#ffdd80">(Material hospedado no GRUPO VIP TELEGRAM)</small></div>
           </div>
         </div>
 
         <div class="badge">Pack Profissional R$50,00</div>
 
-        <p class="lead">Material pensado para DJs, produtores e criadores de conteúdo. Inclui: músicas para festas, efeitos, vinhetas, sample packs e vídeosclipes.</p>
+        <p class="lead">Material pensado para DJs, produtores e criadores de conteúdo.</p>
 
-        <div class="features" aria-hidden>
-          <div class="feature">MAIS DE 4 TERA DE MÚSICAS</div>
-          <div class="feature">+1 TERA DE EFEITOS SONOROS</div>
-          <div class="feature">PACOTÃO DE VIDEOCLIPES</div>
+        <div class="features" style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="feature">Mais de 4 TB de músicas organizadas — MP3 sem vinhetas</div>
+          <div class="feature">+1 TB de efeitos sonoros</div>
+          <div class="feature">Softwares para DJ, apps Android e videoclipes</div>
+          <div class="feature">Pack profissional Gospel — avaliado por rádios</div>
+          <div class="feature">Packs para eventos: 15 anos, Casamento, Natal e mais</div>
+          <div class="feature">Ritmos: Funk, Eletrônica, Sertanejo, Pagode e mais</div>
+          <div class="feature">Músicas EXTEND profissionais</div>
+          <div class="feature">PACK RETRO: Flashback, Eurodance, Discoteca e mais</div>
         </div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://wa.link/pk10ic" target="_blank">CLICK AQUI PARA COMPRAR PELO WHATSAPP</a>
-          <a class="btn btn-secondary" href="#offers">VER OFERTAS</a>
+        <div class="cta-row" style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://wa.link/pk10ic" target="_blank"
+             style="background:linear-gradient(90deg,#ff4d00,#ffcc00);color:#081018;padding:12px 18px;border-radius:12px;font-weight:800;text-decoration:none;">
+             CLICK AQUI PARA COMPRAR PELO WHATSAPP
+          </a>
+          <a class="btn btn-secondary" href="#offers"
+             style="border:1px solid rgba(255,255,255,0.2);padding:12px 18px;border-radius:12px;color:#dbe6ff;text-decoration:none;">
+             VER OFERTAS
+          </a>
         </div>
 
-        <div class="note">Pagamento seguro • Entrega do link no Whatsapp!</div>
       </div>
 
-      <div class="card" aria-label="Vídeo demonstrativo" style="z-index:3">
-        <div class="video-wrap">
-          <video id="heroVideo" playsinline>
-            <source src="video.mp4" type="video/mp4">
-            Seu navegador não suporta vídeo.
-          </video>
+      <!-- ⭐ BOTÃO ASSISTIR ⭐ -->
+      <div style="display:flex; align-items:center; justify-content:center; z-index:3;">
+        <a href="https://www.youtube.com/watch?v=ZFUgfA8mrPg" target="_blank" class="btn-watch">
+          🎬 CLICK AQUI PARA ASSISTIR PARA CONHECER!
+        </a>
+      </div>
 
-          <div style="position:absolute; top:12px; left:12px; z-index:6">
-            <!-- espaço para controles extras -->
-          </div>
+    </div>
 
-          <div class="video-controls" role="group" aria-label="Controles do vídeo">
-            <button class="ctrl-btn" onclick="playVid()">▶ PLAY</button>
-            <button class="ctrl-btn" onclick="stopVid()">■ STOP</button>
-          </div>
-        </div>
+
+    <!-- 🎧 PLAYER DJ PROFISSIONAL -->
+    <div class="dj-player">
+      <audio id="musicPlayer" src="musica.mp3"></audio>
+
+      <button class="dj-btn play-btn" onclick="playMusic()">▶ PLAY</button>
+      <button class="dj-btn stop-btn" onclick="stopMusic()">■ STOP</button>
+
+      <div class="volume-box">
+        <input type="range" min="0" max="1" step="0.01"
+               value="0.7" id="volumeControl"
+               oninput="setVolume(this.value)">
       </div>
     </div>
 
-    <div id="offers" class="offers" style="z-index:2">
-      <h3>ESCOLHA ABAIXO E TENTE A SORTE!</h3>
+
+    <!-- ⭐ OFERTAS ⭐ -->
+    <div id="offers" class="offers">
+      <h3 style="color:#ffd77a;font-size:20px;margin-bottom:6px">ESCOLHA ABAIXO E TENTE A SORTE!</h3>
 
       <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">ROLETA MALUCA — DESCONTO!</a>
 
-      <div class="offer-line">PACK 15 MIL MÚSICAS MP3 + VIDEOCLIPES</div>
+      <div class="offer-line" style="color:#ffd77a;font-weight:800;text-align:center;background:rgba(255,255,255,0.05);padding:12px;border-radius:10px;">
+        PACK 15 MIL MÚSICAS MP3 + VIDEOCLIPES
+      </div>
       <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">SE GANHAR PAGA R$1,00</a>
 
-      <div class="offer-line">PACK 25 MIL MÚSICAS + VIDEOCLIPES</div>
+      <div class="offer-line" style="color:#ffd77a;font-weight:800;text-align:center;background:rgba(255,255,255,0.05);padding:12px;border-radius:10px;">
+        PACK 25 MIL MÚSICAS + VIDEOCLIPES
+      </div>
       <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">SE GANHAR PAGA R$4,00</a>
 
-      <div class="offer-line">PACK PROFISSIONAL DJ</div>
+      <div class="offer-line" style="color:#ffd77a;font-weight:800;text-align:center;background:rgba(255,255,255,0.05);padding:12px;border-radius:10px;">
+        PACK PROFISSIONAL DJ
+      </div>
       <a class="roleta-btn" href="https://mundo-store.github.io/-ROLETA-MALUCA-3-ROLETAS/" target="_blank">SE GANHAR PAGA R$45,00</a>
     </div>
 
-    <footer style="z-index:2">© Mundo DJ — Todos os direitos reservados</footer>
+    <footer>© Mundo DJ — Todos os direitos reservados</footer>
   </div>
 
-  <!-- ÁUDIO -->
-  <audio id="bgAudio" loop autoplay playsinline muted>
-    <source src="musica-fundo.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
-
-  <!-- SCRIPTS -->
   <script>
-    // Elements
-    const audio = document.getElementById('bgAudio');
-    const audioToggle = document.getElementById('audioToggle');
-    const slider = document.getElementById('volumeSlider');
-    const djBtn = document.querySelector('.dj-btn');
-    const bars = document.querySelectorAll('.bar');
+    const music = document.getElementById("musicPlayer");
+    const vol = document.getElementById("volumeControl");
 
-    // Fade config
-    const TARGET_VOLUME = 0.15;   // volume alvo padrão
-    const FADE_IN_MS = 8000;      // fade in duration
-    const FADE_OUT_MS = 600;      // fade out duration
-    const INTERVAL_MS = 50;
-
-    // Start muted and attempt silent play for autoplay allowed by browsers
-    audio.volume = 0;
-    audio.muted = true;
-    audio.play().catch(()=>{ /* autoplay blocked with sound, silent play attempted */ });
-
-    // Utility: fade to volume (target) over duration
-    function fadeTo(target, duration, cb) {
-      const steps = Math.max(1, Math.round(duration / INTERVAL_MS));
-      const stepAmount = (target - audio.volume) / steps;
-      let i = 0;
-      const t = setInterval(() => {
-        i++;
-        audio.volume = Math.min(1, Math.max(0, audio.volume + stepAmount));
-        // small update to bar speed based on current volume
-        updateBarSpeed(audio.volume);
-        if (i >= steps) {
-          clearInterval(t);
-          if (cb) cb();
-        }
-      }, INTERVAL_MS);
-      return t;
+    function playMusic(){
+      music.play();
     }
 
-    // Update equalizer animation speed / scale based on volume
-    function updateBarSpeed(vol) {
-      // map volume (0..1) to animation-duration (fast when loud)
-      const minDur = 240; const maxDur = 900;
-      const dur = maxDur - (vol * (maxDur - minDur));
-      bars.forEach((b, idx) => {
-        // slightly offset durations
-        const offset = (idx - 1) * 80;
-        b.style.animationDuration = Math.max(120, dur + offset) + 'ms';
-        // scale bar base height slightly by volume
-        const base = 0.5 + vol * 1.4; // 0.5..1.9
-        b.style.transform = `scaleY(${base * (0.35)})`; // initial scale until animation runs
-      });
+    function stopMusic(){
+      music.pause();
+      music.currentTime = 0;
     }
 
-    // Toggle ON: unmute, play, fade-in, set UI active
-    function turnOn() {
-      audio.muted = false;
-      audio.play().catch(()=>{});
-      fadeTo(TARGET_VOLUME, FADE_IN_MS);
-      djBtn.classList.add('active');
-      audioToggle.setAttribute('aria-pressed','true');
-      audioToggle.title = "Som ativo — clique para pausar";
+    function setVolume(v){
+      music.volume = v;
     }
-
-    // Toggle OFF: fade-out then mute
-    function turnOff() {
-      fadeTo(0, FADE_OUT_MS, () => {
-        try { audio.muted = true; } catch(e){}
-      });
-      djBtn.classList.remove('active');
-      audioToggle.setAttribute('aria-pressed','false');
-      audioToggle.title = "Som inativo — clique para ativar";
-    }
-
-    // Toggle when clicking DJ button
-    let isOn = false;
-    audioToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!isOn) {
-        turnOn();
-      } else {
-        turnOff();
-      }
-      isOn = !isOn;
-    });
-
-    // Also allow first click anywhere on window to activate (useful on mobile)
-    window.addEventListener('click', function firstClickActivate() {
-      if (!isOn) {
-        turnOn();
-        isOn = true;
-      }
-      // don't remove ability to toggle via button — button still toggles after this
-      window.removeEventListener('click', firstClickActivate);
-    }, { once: true });
-
-    // Volume slider manual control
-    slider.addEventListener('input', () => {
-      audio.muted = false;
-      // apply immediately
-      audio.volume = parseFloat(slider.value);
-      // If slider > 0, consider the widget ON visually
-      if (audio.volume > 0.003) {
-        djBtn.classList.add('active');
-        audioToggle.setAttribute('aria-pressed','true');
-        isOn = true;
-      } else {
-        djBtn.classList.remove('active');
-        audioToggle.setAttribute('aria-pressed','false');
-        isOn = false;
-      }
-      updateBarSpeed(audio.volume);
-    });
-
-    // Sync initial bars speed to initial (zero) volume
-    updateBarSpeed(audio.volume);
-
-    // Video controls (keeps your original behavior)
-    const vid = document.getElementById('heroVideo');
-    function playVid(){ vid.play().catch(()=>{}); }
-    function stopVid(){ vid.pause(); vid.currentTime = 0; }
-
-    // Optional: pause music when page hidden, resume when visible (respecting state)
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        // pause audio playback to save resources
-        try { audio.pause(); } catch(e){}
-      } else {
-        if (!audio.muted && isOn) audio.play().catch(()=>{});
-      }
-    });
   </script>
+
 </body>
 </html>
